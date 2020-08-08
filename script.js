@@ -4,6 +4,7 @@ const authorText = document.getElementById('author');
 const twitterBtn = document.getElementById('twitter');
 const newQuoteBtn = document.getElementById('new-quote');
 const loader = document.getElementById('loader');
+let counter = 0;
 
 // Loading Spinner Shown
 function loading() {
@@ -44,7 +45,11 @@ async function getQuote() {
     // Stop Loading, Show Quote
     complete();
   } catch (error) {
-    getQuote();
+    if(counter < 10) {
+      counter++;
+      getQuote();
+    }
+
   }
 }
 
